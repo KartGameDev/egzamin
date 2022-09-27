@@ -1,5 +1,7 @@
 CREATE DATABASE baza;
 
+USE baza;
+
 CREATE TABLE lokale (
     id INTEGER PRIMARY KEY,
     nazwa TEXT,
