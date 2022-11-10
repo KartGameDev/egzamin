@@ -1,31 +1,64 @@
-CREATE DATABASE Nbaza;
+DROP DATABASE IF EXISTS baza;
 
+CREATE DATABASE baza;
 
-CREATE TABLE restaurants(
-    Id INT IDENTITY PRIMARY KEY NOT NULL,
-    name: VARCHAR(50) NOT NULL,
-    city: VARCHAR(30) NOT NULL,
-    address: VARHAR(100) NOT NULL,
-    zip_code: VARCHAR(6) NOT NULL,
-),
+CREATE TABLE Restaurant(
+    id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    adress VARCHAR(255) NOT NULL,
+    postcode VARCHAR(10) NOT NULL
+);
 
-CREATE TABLE orders(
-    name: VARCHAR(20) NOT NULL,
-    surname: VARCHAR(50) NOT NULL,
-    phone: VARCHAR(12),
-    amt_people: INT VARCHAR(2) NOT NULL,
-    date: DATETIME,
-    restaurant_id FOREIGN KEY NOT NULL REFERENCES restaurants(id),
-),
+CREATE TABLE Restaurant_Table(
+    id int AUTO_INCREMENT NOTNULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    number_of_guests INT,
+    restaurant_id int,
+    FOREIGN KEY (restaurant_id) REFERENCES Restaurant(id)
+);
 
+CREATE TABLE Reservation(
+    id int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    phone_number VARCHAR(12),
+    date DATETIME,
+    number_of_guests INT,
+    restaurant_table_id int,
+    FOREIGN KEY (restaurant_table_id) REFERENCES Restaurant_Table(id)
+);
 
-CREATE TABLE meal(
-    Id INT IDENTITY PRIMARY KEY NOT NULL,
-    name: VARCHAR(50) NOT NULL,
-    mealtype_id FOREIGN KEY NOT NULL REFERENCES meal_type(Id),
-),
+CREATE TABLE MealType(
+    id int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name VARCHAR(100)
+);
 
-CREATE TABLE meal_type(
-    Id INT IDENTITY PRIMARY KEY NOT NULL,
-    name: VARCHAR(50),
-),
+CREATE TABLE Meal(
+    id int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    price INT,
+    meal_name VARCHAR(100),
+    meal_type_id int,
+    restaurant_id int,
+    FOREIGN KEY (meal_type_id) REFERENCES MealType(id),
+    FOREIGN KEY (restaurant_id) REFERENCES Restaurant(id)
+);
+
+CREATE TABLE Employee(
+    id int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    first_name VARCHAR(100),
+    last_name VARCHAR(225),
+    personal_id_number VARCHAR(11)
+);
+
+CREATE TABLE Employee_Position(
+    id int AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Employment(
+    employee_id int,
+    employee_position_id int,
+    restaurant_id int,
+    FOREIGN KEY (employee_id) REFERENCES Employee(id),
+    FOREIGN KEY (employee_position_id) REFERENCES Employee_Position(id),
+    FOREIGN KEY (restaurant_id) REFERENCES Restaurant(id)
+);
