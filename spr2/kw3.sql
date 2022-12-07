@@ -1,0 +1,1 @@
+SELECT nazwa, wystepowanie, wojewodztwo FROM ryby JOIN lowisko ON ryby.id = lowisko.ryby_id WHERE rodzaj = 3;
