@@ -1,0 +1,64 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #63AC74;
+    color: orange;
+    height: 140px;
+    display: flex;
+    font-size: 160%;
+}
+.menu, .logo {
+    width: 50%;
+}
+
+.logo h2 {
+    text-align: right;
+}
+
+header ul{
+    display:flex;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+section{
+    background-color: #E3F6E7;
+    height: 500px;
+    padding: 20px
+}
+
+footer{
+    background-color: #63AC74;
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+}
+
+img{
+    height: 150px;
+    width: auto;
+}
+
+.zdj, .nsk, .tel, .autor{
+    width: 25%;
+}
+
+a{
+    color: orange;
+    margin: 15px;
+}
+
+table{
+    width: 100%;
+    border: 2px green;
+    border-style: solid;
+}
+
+th{
+    background-color: #63AC74;
+    color: white;
+}
